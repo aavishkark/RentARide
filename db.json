@@ -1,0 +1,65 @@
+{
+    "_config": {
+      "port": 3001,
+      "watch": true
+    },
+    "_routes": {
+      "/api/cars": "/cars",
+      "/api/customers": "/customers",
+      "/api/reservations": "/reservations",
+      "/api/transactions": "/transactions"
+    },
+    "cars": [{
+        "id": 1,
+        "brand": "Toyota",
+        "model": "Camry",
+        "year": 2022,
+        "mileage": 15000,
+        "seatingCapacity": 5,
+        "rentalRate": 50.00,
+        "availability": true
+      },
+      {
+        "id": 2,
+        "brand": "Honda",
+        "model": "Civic",
+        "year": 2021,
+        "mileage": 12000,
+        "seatingCapacity": 5,
+        "rentalRate": 45.00,
+        "availability": true
+      },
+      {
+        "id": 3,
+        "brand": "Ford",
+        "model": "Escape",
+        "year": 2020,
+        "mileage": 18000,
+        "seatingCapacity": 5,
+        "rentalRate": 55.00,
+        "availability": false
+      },
+      {
+        "id": 4,
+        "brand": "Chevrolet",
+        "model": "Tahoe",
+        "year": 2022,
+        "mileage": 10000,
+        "seatingCapacity": 7,
+        "rentalRate": 70.00,
+        "availability": true
+      },
+      {
+        "id": 5,
+        "brand": "Nissan",
+        "model": "Altima",
+        "year": 2021,
+        "mileage": 15000,
+        "seatingCapacity": 5,
+        "rentalRate": 48.00,
+        "availability": true
+      }],
+    "customers": [],
+    "reservations": [],
+    "transactions": []
+  }
