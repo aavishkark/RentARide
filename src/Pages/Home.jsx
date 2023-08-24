@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Box,Flex,Input,Button,Heading,Icon,Text,Image,UnorderedList,ListItem} from '@chakra-ui/react'
-import { FaCar, FaBicycle, FaBus } from "react-icons/fa";
+import {Box,Flex,Input,Button,Heading,Text,Image,UnorderedList,ListItem} from '@chakra-ui/react'
 
 function Home() {
     const [cars, setCars] = useState([]);
