@@ -1,0 +1,20 @@
+.cards-container {
+    display: flex;
+    overflow: hidden;
+    width: 300px; /* Adjust card width here */
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(calc(-300px * var(--card-index))); /* Adjust card width here */
+  }
+  
+  .card {
+    width: 300px; /* Adjust card width here */
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    margin-right: 2px; /* Add margin to the right of cards */
+  }
+  
+  .card:nth-child(3n) {
+    margin-right: 0; /* Remove margin from every third card */
+  }
+  
