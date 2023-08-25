@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import {Box,Flex,Input,Button,Heading,Text,Image,UnorderedList,ListItem} from '@chakra-ui/react'
-
+import {Box,Flex,Input,Button,Heading,Text,Image,UnorderedList,ListItem,Grid,Select,IconButton,extendTheme} from '@chakra-ui/react';
+import { ChevronRightIcon, ChevronLeftIcon } from "@chakra-ui/icons";
+import { ChakraProvider } from '@chakra-ui/react';
+import './home.css';
 function Home() {
     const [cars, setCars] = useState([]);
     const [selectedLabel, setSelectedLabel] = useState(null);
@@ -18,6 +20,100 @@ function Home() {
         } )
         .catch((error) => console.error('Error fetching data:', error));
     }, []);
+
+    const theme = extendTheme({
+      styles: {
+        global: {
+          'html, body': {
+            margin: 0,
+            padding: 0,
+            fontFamily: 'sans-serif',
+          },
+        },
+      },
+    });
+    
+    const cards = [
+      'Card 1',
+      'Card 2',
+      'Card 3',
+      'Card 4',
+      'Card 5',
+      'Card 6',
+      'Card 7', // Add more cards as needed
+    ];
+
+    // const reviews = [
+    //   {
+    //     id: 1,
+    //     name: "John Doe",
+    //     image: "/john-doe.jpg",
+    //     review: "Great service! I had an amazing experience renting a car from this website."
+    //   },
+    //   {
+    //     id: 2,
+    //     name: "DODO",
+    //     image: "/john-doe.jpg",
+    //     review: "This shit sucks"
+    //   },
+    //   {
+    //     id: 3,
+    //     name: "yoro",
+    //     image: "/john-doe.jpg",
+    //     review: "This shit sucks"
+    //   },
+    //   {
+    //     id: 4,
+    //     name: "mOjO",
+    //     image: "/john-doe.jpg",
+    //     review: "This shit sucks"
+    //   },
+    //   {
+    //     id: 5,
+    //     name: "mOjO",
+    //     image: "/john-doe.jpg",
+    //     review: "This shit sucks"
+    //   },
+    //   {
+    //     id: 6,
+    //     name: "mOjO",
+    //     image: "/john-doe.jpg",
+    //     review: "This shit sucks"
+    //   },
+    //   {
+    //     id:7,
+    //     name: "mOjO",
+    //     image: "/john-doe.jpg",
+    //     review: "This shit sucks"
+    //   },
+    //   {
+    //     id: 8,
+    //     name: "mOjO",
+    //     image: "/john-doe.jpg",
+    //     review: "This shit sucks"
+    //   },
+    //   {
+    //     id: 9,
+    //     name: "mOjO",
+    //     image: "/john-doe.jpg",
+    //     review: "This shit sucks"
+    //   }
+    //   // Add more reviews here...
+    // ];
+    
+    const [cardIndex, setCardIndex] = useState(0);
+
+  const showPreviousCard = () => {
+    if (cardIndex > 0) {
+      setCardIndex(cardIndex - 1);
+    }
+  };
+
+  const showNextCard = () => {
+    if (cardIndex < cards.length - 3) {
+      setCardIndex(cardIndex + 1);
+    }
+  };
   
     return (
       <div>
@@ -152,6 +248,94 @@ function Home() {
         </UnorderedList>
       </Box>
     </Flex>
+    <Grid templateColumns="repeat(3, 1fr)" gap="2" h="100px">
+      {/* Dropdown 1 */}
+      <Box>
+        <Select
+          defaultValue="default1"
+          icon={<Image src="https://doav52ie4cv60.cloudfront.net/images/renters-ico.svg" boxSize="20px" />}
+          placement="bottom-start" // Set the placement to open in the bottom direction
+        >
+          <option value="default1" disabled>
+            Select Option 1
+          </option>
+          <option value="option1">Option 1</option>
+          <option value="option2">Option 2</option>
+          <option value="option3">Option 3</option>
+        </Select>
+      </Box>
+
+      {/* Dropdown 2 */}
+      <Box >
+        <Select
+          defaultValue="default2"
+          icon={<Image src="https://doav52ie4cv60.cloudfront.net/images/earn-ico.svg" boxSize="20px" />}
+          placement="bottom" // Set the placement to open in the bottom direction
+        >
+          <option value="default2" disabled>
+            Select Option 2
+          </option>
+          <option value="option1">Option 1</option>
+          <option value="option2">Option 2</option>
+          <option value="option3">Option 3</option>
+        </Select>
+      </Box>
+
+      {/* Dropdown 3 */}
+      <Box>
+        <Select
+          defaultValue="default3"
+          icon={<Image src="https://doav52ie4cv60.cloudfront.net/images/get-paid-ico.svg" boxSize="20px" />}
+          placement="bottom" // Set the placement to open in the bottom direction
+        >
+          <option value="default3" disabled>
+            Select Option 3
+          </option>
+          <option value="option1">Option 1</option>
+          <option value="option2">Option 2</option>
+          <option value="option3">Option 3</option>
+        </Select>
+      </Box>
+
+      {/* Dropdown 4 */}
+      <Box>
+        <Select
+          defaultValue="default4"
+          icon={<Image src="https://doav52ie4cv60.cloudfront.net/images/car-price-ico.svg" boxSize="20px" />}
+          placement="bottom" // Set the placement to open in the bottom direction
+        >
+          <option value="default4" disabled>
+            Select Option 4
+          </option>
+          <option value="option1">Option 1</option>
+          <option value="option2">Option 2</option>
+          <option value="option3">Option 3</option>
+        </Select>
+      </Box>
+    </Grid>
+    <ChakraProvider theme={theme}>
+      <Flex justify="center" align="center" minH="100vh">
+        <Button onClick={showPreviousCard} variant="outline" mr="2">
+          Previous
+        </Button>
+        <div
+          className="cards-container"
+        >
+          {cards.map((card, index) => (
+            <Box
+              key={index}
+              className="card"
+            >
+              <Text>{card}</Text>
+            </Box>
+          ))}
+        </div>
+        <Button onClick={showNextCard} variant="outline" ml="2">
+          Next
+        </Button>
+      </Flex>
+    </ChakraProvider>
+
         <h1>Car List</h1>
         <ul>
           {/* {cars.map((car) => (
