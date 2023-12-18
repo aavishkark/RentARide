@@ -19,6 +19,7 @@ import { Link as ReactRouterLink } from 'react-router-dom'
 import { Link as ChakraLink, LinkProps } from '@chakra-ui/react'
 function BookingPage() {
   const { id } = useParams();
+  const apiUrl = process.env.REACT_APP_API_URL + '/cars';
   const [car,setcar] = useState({
     "id": 60,
     "name": "Nissan Magnite",
@@ -34,7 +35,7 @@ function BookingPage() {
     "city": "Pune"
   });
   useEffect(() => {
-    fetch(`http://localhost:3000/cars/${id}`)
+    fetch(`${apiUrl}/${id}`)
       .then((response) => response.json())
       .then((data) =>{
           console.log(data)

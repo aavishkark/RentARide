@@ -8,7 +8,8 @@
     "/api/customers": "/customers",
     "/api/reservations": "/reservations",
     "/api/transactions": "/transactions",
-    "/api/users": "/users"
+    "/api/users": "/users",
+    "/api/admin":"/admin"
   },
   "cars": [
     {

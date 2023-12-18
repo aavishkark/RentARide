@@ -28,7 +28,7 @@ function AdminPage() {
     });
   
     useEffect(() => {
-      fetch('http://localhost:3000/cars')
+      fetch('https://mock-server-rentride.onrender.com/cars')
         .then((response) => response.json())
         .then((data) =>{
             console.log(data)
@@ -40,6 +40,7 @@ function AdminPage() {
    const [url,seturl]=useState("")
   const [updateCarData, setUpdateCarData] = useState({
   });
+  const apiUrl = process.env.REACT_APP_API_URL + '/cars';
     const handleAddCar = () => {
       const carData = {
         name: newCar.name,
@@ -52,7 +53,7 @@ function AdminPage() {
         rating:0,
         photo:"https://zoomcar-assets.zoomcar.com/170495/HostCarImage/host_car_image_170495862be297-2716-4283-b373-624f4d180039.jpg20230305-37-1xjofp"
       };
-      axios.post('http://localhost:3000/cars', carData)
+      axios.post(apiUrl, carData)
         .then((response) => {
           console.log('Car added successfully', response.data);
           window.location.reload();
@@ -62,8 +63,8 @@ function AdminPage() {
         });
     };
     const handleUpdateCar = (carId) => {
-      seturl(`http://localhost:3000/cars/${carId}`)
-      axios.get(`http://localhost:3000/cars/${carId}`)
+      seturl(`${apiUrl}/${carId}`)
+      axios.get(`${apiUrl}/${carId}`)
         .then((response) => {
           setUpdateCarData(response.data)
           openUpdateModal()
@@ -86,7 +87,7 @@ function AdminPage() {
     }
     const handleDeleteCar = (carId) => {
       axios
-  .delete(`http://localhost:3000/cars/${carId}`)
+  .delete(`${apiUrl}/${carId}`)
   .then((response) => {
     console.log('Resource deleted successfully:', response.data);
     window.location.reload();

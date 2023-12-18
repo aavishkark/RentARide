@@ -41,11 +41,12 @@ function SignUpForm() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
+  const apiUrl = process.env.REACT_APP_API_URL + '/users?username=';
+  const apiUrl2 = process.env.REACT_APP_API_URL + '';
   const handleSubmit = async (e) => {
     e.preventDefault();
     const existingUser = await fetch(
-        `http://localhost:3000/users?username=${formData.username}`
+        `${apiUrl}${formData.username}`
       ).then((response) => response.json());
     if(existingUser.length > 0){
       handleSignUpError('User already registered.');
@@ -53,7 +54,7 @@ function SignUpForm() {
     else{
       formData.activeRides = [];
         try {
-            const response = await fetch('http://localhost:3000/users', {
+            const response = await fetch(`${apiUrl2}/users`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',

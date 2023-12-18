@@ -29,11 +29,12 @@ function LoginPage() {
   const { isAuth, login, logout } = useAuth();
   const { userProfile, updateUserProfile } = useUserProfile();
   const { location, updateLocation } = useLocation();
+  const apiUrl2 = process.env.REACT_APP_API_URL + '/users';
   const nav=useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3000/users', {
+      const response = await fetch(apiUrl2, {
         method: 'GET',
       });
       const users = await response.json();

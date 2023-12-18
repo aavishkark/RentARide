@@ -27,8 +27,9 @@ function CarTypesComponent() {
     const handleLabelClick = (label) => {
       setSelectedLabel(label);
     };
+    const apiUrl = process.env.REACT_APP_API_URL + '/cars';
     useEffect(() => {
-      fetch(`http://localhost:3000/cars?type2=${selectedLabel}`)
+      fetch(`${apiUrl}?type2=${selectedLabel}`)
         .then((response) => response.json())
         .then((data) =>{
             console.log(data)

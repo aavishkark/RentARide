@@ -27,10 +27,11 @@ function AdminLoginPage() {
   const [errorMessage, setErrorMessage] = useState('');
   const { isAuth, login, logout } = useAuth();
   const nav=useNavigate()
+  const apiUrl = process.env.REACT_APP_API_URL + '/admin';
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3000/admin', {
+      const response = await fetch(apiUrl, {
         method: 'GET',
       });
       const users = await response.json();

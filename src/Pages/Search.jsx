@@ -8,8 +8,9 @@ function SearchResultsPage() {
   const { location, updateLocation } = useLocation();
   const { date, updatedate} = useDate();
   const [data,setdata]=useState([]);
+  const apiUrl2 = process.env.REACT_APP_API_URL + '/cars';
   useEffect(() => {
-    fetch(`http://localhost:3000/cars?city=${location}`)
+    fetch(`${apiUrl2}?city=${location}`)
       .then((response) => response.json())
       .then((data) =>{
           console.log(data)

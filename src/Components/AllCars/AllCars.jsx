@@ -24,8 +24,9 @@ function CarList() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const cardsPerPage = 3;
   const [cars, setCars] = useState([]);
+  const apiUrl = process.env.REACT_APP_API_URL + '/cars';
   useEffect(() => {
-    fetch('http://localhost:3000/cars')
+    fetch(apiUrl)
       .then((response) => response.json())
       .then((data) =>{
           console.log(data)
